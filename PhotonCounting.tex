@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[UTF8]{ctex}
+\usepackage{biblatex}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{geometry}
+\addbibresource{bib.bib}
+\setlength{\parindent}{0em}
+\bibliography{bib}
+\geometry{a4paper,scale=0.8}
+
+\title{光子计数研究报告}
+\author{郭远洋，章于，张可}
+\date{2021年5月25日}
+\linespread{1.5}
+\begin{document}
+
+\maketitle
+
+\section{课题背景}
+\textbf{光子计数器与光子计数过程}
+
+光子计数器是一种可以测量光子级别微弱能量的无限光通信信号检测设备。它可以将微弱光信号能量转化为数值形式的光子数，便于后续的数字信号处理。但是，由于光电量子效应的存在，光子计数器并不能完美得到所接收到的光子数。在一个有限长的符号时间内，光子计数过程宏观表现为泊松分布。这意味着光子计数器引入了新的噪声，称为泊松散弹噪声。
+
+离散时间泊松信道（Discrete-Time Poisson，DTP）是通用地描述泊松散弹噪声影响下光子计数过程的数学模型。需要注意的是，DTP研究的是光子计数器内部散弹噪声，与传统AWGN信道有很大的区别。输出Y是满足以信道输入为参数的泊松分布，即
+$$Pr(Y=y|\Lambda=\lambda)=\frac{\lambda^y}{y!}e^{-\lambda} \eqno{(1)}$$
+对于完美的光子计数接收端，其可以无误差的检测每个光子以及它的到达时间。然而，完美的光子计数接收端难以实现，我们更关注于非完美的接收端。当光子到达时，探测器产生具有特定宽度的脉冲，当两个光子的到达时间间隔比脉冲宽度短，则会造成两个脉冲合并到一起。两个脉冲合并到一起时的最大不可区分的光子到达时间间隔被称为死时间。
+非理想光子计数器的计数值服从二项分布：
+$$Pr(Y=y | \Lambda=\lambda)=C^{y}_{N}\left(1-e^-\frac{\lambda}{N}\right)^y\left(e^-\frac{\lambda}{N}\right)^{N-y} \eqno{(2)}$$
+
+\section{课题内容}
+\subsection{求解Q-PAM调制SISO互信息}
+
+在Q进制脉冲振幅（Q-PAM）调制下，
+$$\Lambda = X\cdot\frac{n_s}{Q}+n_b \eqno{(3)}$$
+其中$n_b$为激光器最大发射光子数，$X$是调制后的Q进制信息，则$X\cdot\frac{n_s}{Q}$为激光器在发射信息为$X$时发射的光子数。$n_b$是恒定的背景光噪声光子数。假定发射信息是等概的，即：
+$$Pr(X=x,x=1,2,...,Q)=\frac{1}{Q} \eqno{(4)}$$
+将(4)带入(2)可得Q-PAM调制下SISO的输出服从：
+$$Pr(Y=y|X=x)=C^{y}_{N}\left[1-exp\left(-\frac{x\cdot\frac{n_s}{Q}+n_b}{N}\right)\right]^y\cdot\left[exp\left(-\frac{x\cdot\frac{n_s}{Q}+n_b}{N}\right)\right]^{N-y} \eqno{(5)}$$
+求互信息$I(X;Y)$。
+
+\subsection{求解OOK调制SIMO互信息}
+
+在开关键控（OOK）调制下，第n路输出为：$$\Lambda_n=X\cdot h_s\cdot n_s + n_b \eqno{(6)}$$
+其中$n_s$为激光器打开时的发射光子数，$X$是调制后的二进制信息，$h_n$为SIMO系数。$n_b$是恒定的背景光噪声光子数。假设发射信息是等概的。
+将(6)带入(2)可得OOK调制下DTP-SIMO信道的输出服从：$$Pr(Y_n=y_n|X=x)=C^{y_n}_{N}\left[1-exp\left(-\frac{x\cdot h_n\cdot n_s+n_b}{N}\right)\right]^{y_n} \left[exp\left(-\frac{x\cdot h_n\cdot n_s+n_b}{N}\right)\right]$$
+
+\end{document}
