@@ -56,4 +56,19 @@ $$Pr(X_m=0,∀m=1,2,...,M)=Pr(X_m=1,∀m=1,2,...,M)=\frac{1}{2} \eqno{(9)}$$
 将(8)带入(2)可得第$l$时隙Q-PAM调制下第n路DTP-MIMO信道的输出服从:
 $$Pr(Y_n=y_n|X_m=x_m,m=1,2,...,M)=$$
 $$C^{y_n}_{N}\left[1-exp\left(-\frac{\sum\limits_{m=1}^{M}h_{m,n}x_mn_{sm}+n_b}{N}\right)\right]^{y_n} \left[exp\left(-\frac{\sum\limits_{m=1}^{M}h_{m,n}x_mn_{sm}+n_b}{N}\right)\right]^{N-y_n} \eqno{(10)}$$
+求M=2, N=4时的和速率$\sum\limits_{n=2}^{4}I_n(X_1,X_2;Y_n)$。
+其中$I_n(X_1,X_2;Y_n)$为第n路的无条件互信息。
+
+\subsection{求解大背景光下OOK调制DTP-MIMO互信息}
+
+当$n_b$较大时，由于泊松分布的特性，可近似为高斯分布。近似后概率密度函数为：
+$$f(Y_n=y_n|X_m=x_m,m=1,2,...,M)=\frac{exp\left\{-\frac{\left[y_n-\left(\sum\limits_{m=1}^Mh_{m,n}x_mn_{sm}+n_b\right)\right]^2}{2\left(\sum\limits_{m=1}^Mh_{m,n}x_mn_{sm}+n_b\right)}\right\}}{\sqrt{2\pi\left(\sum\limits_{m=1}^Mh_{m,n}x_mn_{sm}+n_b\right)}} \eqno{(11)}$$
+求M=2,N=4时的和速率$\sum\limits_{n=1}^4I\left(X_1,X_2;Y_n\right)$。
+
+\section{课题推导过程}
+\subsection{求解Q-PAM调制SISO互信息}
+\subsection{求解OOK调制SIMO互信息}
+\subsection{求解OOK调制MIMO互信息}
+\subsection{求解大背景光下OOK调制DTP-MIMO互信息}
+
 \end{document}
