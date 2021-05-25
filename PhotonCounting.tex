@@ -44,6 +44,16 @@ $$Pr(Y=y|X=x)=C^{y}_{N}\left[1-exp\left(-\frac{x\cdot\frac{n_s}{Q}+n_b}{N}\right
 
 在开关键控（OOK）调制下，第n路输出为：$$\Lambda_n=X\cdot h_s\cdot n_s + n_b \eqno{(6)}$$
 其中$n_s$为激光器打开时的发射光子数，$X$是调制后的二进制信息，$h_n$为SIMO系数。$n_b$是恒定的背景光噪声光子数。假设发射信息是等概的。
-将(6)带入(2)可得OOK调制下DTP-SIMO信道的输出服从：$$Pr(Y_n=y_n|X=x)=C^{y_n}_{N}\left[1-exp\left(-\frac{x\cdot h_n\cdot n_s+n_b}{N}\right)\right]^{y_n} \left[exp\left(-\frac{x\cdot h_n\cdot n_s+n_b}{N}\right)\right]$$
+将(6)带入(2)可得OOK调制下DTP-SIMO信道的输出服从：$$Pr(Y_n=y_n|X=x)=C^{y_n}_{N}\left[1-exp\left(-\frac{x\cdot h_n\cdot n_s+n_b}{N}\right)\right]^{y_n} \left[exp\left(-\frac{x\cdot h_n\cdot n_s+n_b}{N}\right)\right]^{N-y_n} \eqno{(7)}$$
+求和速率$I(X;Y)=\sum\limits_{n=1}^{N}I(X;Y_n)$。
 
+\subsection{求解OOK调制MIMO互信息}
+
+在开关键控（OOK）调制下,m路输入n路输出:
+$$\Lambda_{m,n}=X_m\cdot h_{m,n}\cdot n_{sm} + n_{bm} \eqno{(8)}$$
+其中$n_{sm}$为第m路激光器打开时的发射光子数， $X_m$是调制后的二进制信息， 为MIMO系数。 $n_{bm}$是平均到每路的恒定的背景光噪声光子数。若定义总背景光噪声光子数为$n_b$，显然$\displaystyle n_{bm}=\frac{n_b}{M}$。假定发射信息是等概的，即:
+$$Pr(X_m=0,∀m=1,2,...,M)=Pr(X_m=1,∀m=1,2,...,M)=\frac{1}{2} \eqno{(9)}$$
+将(8)带入(2)可得第$l$时隙Q-PAM调制下第n路DTP-MIMO信道的输出服从:
+$$Pr(Y_n=y_n|X_m=x_m,m=1,2,...,M)=$$
+$$C^{y_n}_{N}\left[1-exp\left(-\frac{\sum\limits_{m=1}^{M}h_{m,n}x_mn_{sm}+n_b}{N}\right)\right]^{y_n} \left[exp\left(-\frac{\sum\limits_{m=1}^{M}h_{m,n}x_mn_{sm}+n_b}{N}\right)\right]^{N-y_n} \eqno{(10)}$$
 \end{document}
