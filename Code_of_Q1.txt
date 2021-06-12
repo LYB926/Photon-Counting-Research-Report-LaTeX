@@ -1,0 +1,26 @@
+clear
+nb=0:0.1:1;
+ns=0:1:50;
+[X,Y]=meshgrid(ns,nb);
+I1=zeros(11,51);
+for i=1:3
+    pi=pfun(i,X,Y);
+    p4=pfun(4,X,Y);
+    I1=I1+(1.-pi).*log2((1.-pi)./(1.-p4))-(1.-pi).*log2(pi./p4)+log2(pi./p4);
+end
+I1=I1*2.5+2-0.75*log2(exp(1));
+I2=0;
+for i=1:3
+    for j=1:3
+        pi=pfun(i,X,Y);
+        pj=pfun(j,X,Y);
+        p4=pfun(4,X,Y);
+        I2=I2+(((1.-pi).*(1.-pj)./(1.-p4))+((pi.*pj)./p4)).^10;
+    end
+end
+I=I1-0.25*log2(exp(1))*I2;
+surf(X,Y,I);
+ 
+function p=pfun(num_i,nb,ns)
+    p=exp(-((num_i.*ns./4)+nb)./10);
+end

@@ -7,6 +7,32 @@
 \usepackage{amsmath}
 \usepackage{geometry}
 \usepackage{graphicx}
+\usepackage{listings}
+\lstset{
+    basicstyle          =   \sffamily,          
+    keywordstyle        =   \bfseries,        
+    commentstyle        =   \rmfamily\itshape,  
+    stringstyle         =   \ttfamily,  
+    flexiblecolumns,             个
+    numbers             =   left,   
+    showspaces          =   false,  
+    numberstyle         =   \zihao{-5}\ttfamily,    
+    showstringspaces    =   false,
+    captionpos          =   t,      
+    frame               =   lrtb,   
+}
+\lstdefinestyle{Python}{
+    language        =   Python, 
+    basicstyle      =   \zihao{-5}\ttfamily,
+    numberstyle     =   \zihao{-5}\ttfamily,
+    keywordstyle    =   \color{blue},
+    keywordstyle    =   [2] \color{teal},
+    stringstyle     =   \color{magenta},
+    commentstyle    =   \color{red}\ttfamily,
+    breaklines      =   true,   
+    columns         =   fixed,  
+    basewidth       =   0.5em,
+}
 \addbibresource{bib.bib}
 \setlength{\parindent}{0em}
 \bibliography{bib}
@@ -184,6 +210,17 @@ $I(X;Y)=I_1+I_2+log_2Q$
     &-\sum\limits_{g=0}^\infty\left(^{1+1/m}_g\right)\sum\limits_{\sum_{i=1}^{Q-1}g_i=g}\frac{g!}{\prod_{i=1}^{Q-1}g_i!}\left[\prod_{i=1}^{Q-1}\left(\frac{1-e^{-\frac{t_i}{N}}}{1-e^{-\frac{t_Q}{N}}}\right)^{g_i}·\left(1-e^{-\frac{t_Q}{N}}\right)+\prod_{i=1}^{Q-1}e^{\frac{g_i(t_Q-t_i)-t_Q}{N}}\right]^N\right\}
   \end{aligned}
 \end{equation*}
+使用以下代码绘图：
+\lstinputlisting[
+    style       =   Python,
+    caption     =   {\bf Matlab Program},
+    label       =   {ff.py}
+]{Code_of_Q1.txt}
+\newpage
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=13.5cm]{Image_of_Q1.png}
+\end{figure}
 \subsection{求解OOK调制SIMO互信息}
 定义:\par$\Lambda_n=X·h_n·n_s+n_b$\par$t_i=x_ih_nn_s+n_b$\par$P_r(Y_n=y_n|x=x_i)=C_N^{y_n}\left[rexp\left(-\frac{t_i}{N}\right)\right]^{y_n}·\left[exp\left(-\frac{t_i}{N}\right)\right]^{N-y_n}$\par$I(X;Y)=H(y_n)-H(Y_n|X)$\par$t_0=n_b$,$t_1=h_nn_s+n_b$\par
 那么，可以得到：
