@@ -109,29 +109,29 @@ $X$的各取值等概，所以$P(x_i)=\frac{1}{Q}$。
 \begin{equation*}
   \begin{aligned}
     I(X;Y) &= -\sum\limits_{j=0}^{N}\left\{\left[\sum\limits_{i=0}^Q\frac{1}{Q}P_{t_i}(y_j)\right]log_2\left[\sum\limits_{i=1}^Q\frac{1}{Q}P_{t_i}(y_j)\right]\right\}+\frac{1}{Q}\sum\limits_{j=0}^N\sum\limits_{i=0}^{Q}\left[P_{t_i}(y_j)log_2P_{t_i}(y_j)\right]  \\
-      &= -\frac{1}{Q}\sum\limits_{j=0}^{N}\left\{\left[\sum\limits_{i=0}^QP_{t_i}(y_j)\right]log_2\left[\frac{1}{Q}\sum\limits_{i=1}^QP_{t_i}(y_j)\right]\right\}+\frac{1}{Q}\sum\limits_{j=0}^N\sum\limits_{i=0}^{Q}\left[P_{t_i}(y_j)log_2P_{t_i}(y_j)\right]  \\
-      &= -\frac{1}{Q}\sum\limits_{j=0}^{N}\left[\sum\limits_{i=0}^QP_{t_i}(y_j)\right]
+      &= -\frac{1}{Q}\sum\limits_{j=0}^{N}\left\{\left[\sum\limits_{i=0}^QP_{t_i}(y_j)\right]log_2\left[\frac{1}{Q}\sum\limits_{i=1}^QP_{t_i}(y_j)\right]\right\}+\frac{1}{Q}\sum\limits_{j=0}^N\sum\limits_{i=0}^{Q}\left[P_{t_i}(y_j)log_2P_{t_i}(y_j)\right]  
+      
   \end{aligned}
 \end{equation*}
 将上式中$\sum\limits_{j=0}^{N}y_j$均改为$\sum\limits_{y=0}^{N}y$后：
 \begin{equation*}
   \begin{aligned}
-    I(X;Y) =& -\frac{1}{Q}\sum\limits_{y=0}^{N}\left\{\left[\sum\limits_{i=0}^QP_{t_i}(y)\right]\left[log_2\left(\frac{1}{Q}\sum\limits_{i=1}^Q\frac{P_{t_i}(y)}{P_{t_Q}(y)}\right)-log_2Q\right]\right\} + \frac{1}{Q}\sum\limits_{y=0}^{N}\left\{\sum\limits_{i=0}^{Q-1}\left[P_{t_i}(y)log_2\frac{P_{t_i}(y)}{P_{t_Q}(y)}\right]\right\} \\
-    =& -\frac{1}{Q}\sum\limits_{y=0}^{N}\left\{\left[\sum\limits_{i=0}^QP_{t_i}(y)\right]\left[log_2\left(\frac{1}{Q}\sum\limits_{i=1}^Q\frac{P_{t_i}(y)}{P_{t_Q}(y)}\right)\right]\right\} + \frac{1}{Q}\left[\sum\limits_{y=0}^{N}\sum\limits_{i=0}^{Q-1}P_{t_i}(y)\right]·log_2Q \\
+    I(X;Y) =& -\frac{1}{Q}\sum\limits_{y=0}^{N}\left\{\left[\sum\limits_{i=0}^QP_{t_i}(y)\right]\left[log_2\left(\sum\limits_{i=1}^Q\frac{P_{t_i}(y)}{P_{t_Q}(y)}\right)-log_2Q\right]\right\} + \frac{1}{Q}\sum\limits_{y=0}^{N}\left\{\sum\limits_{i=0}^{Q-1}\left[P_{t_i}(y)log_2\frac{P_{t_i}(y)}{P_{t_Q}(y)}\right]\right\} \\
+    =& -\frac{1}{Q}\sum\limits_{y=0}^{N}\left\{\left[\sum\limits_{i=0}^QP_{t_i}(y)\right]\left[log_2\left(\sum\limits_{i=1}^Q\frac{P_{t_i}(y)}{P_{t_Q}(y)}\right)\right]\right\} + \frac{1}{Q}\left[\sum\limits_{y=0}^{N}\sum\limits_{i=0}^{Q-1}P_{t_i}(y)\right]·log_2Q \\
     &+ \frac{1}{Q}\sum\limits_{y=0}^{N}\left\{\sum\limits_{i=0}^{Q-1}\left[P_{t_i}(y)log_2\frac{P_{t_i}(y)}{P_{t_Q}(y)}\right]\right\} \\
     =& I_1 + log_2Q + I_2
   \end{aligned}
 \end{equation*}
-$I_1=-\frac{1}{Q}\sum\limits_{y=0}^{N}\left\{\left[\sum\limits_{i=1}^QP_{t_i}(y)\right]\left[log_2\left(\sum\limits_{i=1}^Q\frac{P_{t_i}(y)}{P_{t_0}(y)}\right)\right]\right\}$\par
-\par\par 利用Taylor展开：$ln(1+x)≈x$得到:
-$$log_2\left(\sum\limits_{i=1}^Q\frac{P_{t_i}}{P_{t_0}}\right)=log_2e·ln\left(\sum\limits_{i=1}^{Q-1}\frac{P_{t_i}}{P_{t_0}}+1\right)\approx log_2e\left(\sum\limits_{i=1}^{Q-1}\frac{P_{t_i}}{P_{t_0}}\right)$$
+$I_1=-\frac{1}{Q}\sum\limits_{y=0}^{N}\left\{\left[\sum\limits_{i=1}^QP_{t_i}(y)\right]\left[log_2\left(\sum\limits_{i=1}^Q\frac{P_{t_i}(y)}{P_{t_Q}(y)}\right)\right]\right\}$\par
+\par\par 利用Taylor展开：$ln(1+x)~x$得到:
+$$log_2\left(\sum\limits_{i=1}^Q\frac{P_{t_i}}{P_{t_Q}}\right)=log_2e·ln\left(\sum\limits_{i=1}^{Q-1}\frac{P_{t_i}}{P_{t_Q}}+1\right)\approx log_2e\left(\sum\limits_{i=1}^{Q-1}\frac{P_{t_i}}{P_{t_Q}}\right)$$
 \newpage
 所以：\par
 \begin{equation*}
   \begin{aligned}
-    I_1 &= -\frac{1}{Q}log_2e\sum\limits_{y=0}^{N}\left[\left(\sum\limits_{i=1}^QP_{t_i}(y)\right)\left(\sum\limits_{i=1}^{Q-1}\frac{P_{t_i}(y)}{P_{t_0}(y)}\right)\right] \\
-    &= -\frac{1}{Q}log_2e\sum\limits_{y=0}^{N}\left[\left(\sum\limits_{i=1}^{Q-1}P_{t_i}(y)\right)\left(\sum\limits_{i=1}^{Q-1}\frac{P_{t_i}(y)}{P_{t_0}(y)}\right)+\sum\limits_{i=1}^{Q-1}P_{t_i}(y)\right] \\
-    &=  -\frac{1}{Q}log_2e\sum\limits_{y=0}^{N}\left[\left(\sum\limits_{i=1}^{Q-1}P_{t_i}(y)\right)\left(\sum\limits_{i=1}^{Q-1}\frac{P_{t_i}(y)}{P_{t_0}(y)}\right)\right]-\frac{Q-1}{Q}log_2e
+    I_1 &= -\frac{1}{Q}log_2e\sum\limits_{y=0}^{N}\left[\left(\sum\limits_{i=1}^QP_{t_i}(y)\right)\left(\sum\limits_{i=1}^{Q-1}\frac{P_{t_i}(y)}{P_{t_Q}(y)}\right)\right] \\
+    &= -\frac{1}{Q}log_2e\sum\limits_{y=0}^{N}\left[\left(\sum\limits_{i=1}^{Q-1}P_{t_i}(y)\right)\left(\sum\limits_{i=1}^{Q-1}\frac{P_{t_i}(y)}{P_{t_Q}(y)}\right)+\sum\limits_{i=1}^{Q-1}P_{t_i}(y)\right] \\
+    &=  -\frac{1}{Q}log_2e\sum\limits_{y=0}^{N}\left[\left(\sum\limits_{i=1}^{Q-1}P_{t_i}(y)\right)\left(\sum\limits_{i=1}^{Q-1}\frac{P_{t_i}(y)}{P_{t_Q}(y)}\right)\right]-\frac{Q-1}{Q}log_2e
   \end{aligned}
 \end{equation*}
 带入$P_{t_i}(y)=Pr(y|x_i)=C^{y}_{N}\left(1-e^{-\frac{t_i}{N}}\right)^y\left(e^{-\frac{t_i}{N}}\right)^{N-y}$:\par
@@ -185,7 +185,7 @@ $$I_1=-\frac{1}{Q}log_2e\sum\limits_{y=0}^{N}\left[P_{t_Q}(y)\sum\limits_{i=1}^{
 \begin{equation*}
   \begin{aligned}
     I_1 &= -\frac{1}{Q}log_2e\sum\limits_{y=0}^{N}\left[P_{t_Q}(y)\sum\limits_{i=1}^{Q-1}a_i·\sum\limits_{k=0}^{\infty}\left(^{\frac{1}{2}}_k\right)\left(\sum\limits_{i=1}^{Q-1}a_i\right)^{k}\right] \\
-    &= -\frac{1}{Q}log_2e\sum\limits_{y=0}^{N}\left[P_{t_Q}(y)\sum\limits_{k=0}^{\infty}\left(^{\frac{1}{2}}_k\right)\sum\limits_{k_1+k_2+···+k_{Q-1}=k+1}a_1^{k_1}a_2^{k_2}···a_{Q-1}^{k_{Q-1}\frac{(k+1)!}{k_1!k_2!···k_{Q-1}!}}\right] \\
+    &= -\frac{1}{Q}log_2e\sum\limits_{y=0}^{N}\left[P_{t_Q}(y)\sum\limits_{k=0}^{\infty}\left(^{\frac{1}{2}}_k\right)\sum\limits_{k_1+k_2+···+k_{Q-1}=k+1}a_1^{k_1}a_2^{k_2}···a_{Q-1}k_{Q-1}\frac{(k+1)!}{k_1!k_2!···k_{Q-1}!}\right] \\
     =& -\frac{1}{Q}log_2e\sum\limits_{k=0}^{\infty}\left(^{1/2}_k\right)\sum\limits_{\sum_{i=1}^{Q-1}k_i=k+1}\left\{\frac{(k+1)!}{\prod_{i=1}^{Q-1}k_i!}\sum\limits_{y=0}^NC_N^y\left[\prod_{i=0}^{Q-1}\left(\frac{1-e^{-\frac{t_i}{N}}}{1-e^{-\frac{t_Q}{N}}}\right)^{k_i}·\left(1-e^{-\frac{t_Q}{N}}\right)\right]^y\right\} \\
     &·\left[\prod_{i=1}^{Q-1}e^{\left(\frac{(Q-i)n_s}{QN}\right)^{k_i}}e^{-\frac{t_Q}{N}}\right]^{N-y}
   \end{aligned}
@@ -222,7 +222,7 @@ $I(X;Y)=I_1+I_2+log_2Q$
     \includegraphics[width=13.5cm]{Image_of_Q1.png}
 \end{figure}
 \subsection{求解OOK调制SIMO互信息}
-定义:\par$\Lambda_n=X·h_n·n_s+n_b$\par$t_i=x_ih_nn_s+n_b$\par$P_r(Y_n=y_n|x=x_i)=C_N^{y_n}\left[rexp\left(-\frac{t_i}{N}\right)\right]^{y_n}·\left[exp\left(-\frac{t_i}{N}\right)\right]^{N-y_n}$\par$I(X;Y)=H(y_n)-H(Y_n|X)$\par$t_0=n_b$,$t_1=h_nn_s+n_b$\par
+定义:\par$\Lambda_n=X·h_n·n_s+n_b$\par$t_i=x_ih_nn_s+n_b$\par$P_r(Y_n=y_n|X=x_i)=C_N^{y_n}\left[1-exp\left(-\frac{t_i}{N}\right)\right]^{y_n}·\left[exp\left(-\frac{t_i}{N}\right)\right]^{N-y_n}$\par$I(X;Y)=H(Y_n)-H(Y_n|X)$\par$t_Q=n_b$,$t_1=h_nn_s+n_b$\par
 那么，可以得到：
 \begin{equation*}
     \begin{aligned}
@@ -270,7 +270,7 @@ $I(X;Y)=I_1+I_2+log_2Q$
     \end{aligned}
 \end{equation*}
 设$I(X;y_n)=1-B+A$:\par
-$I(X;Y)=\sum\limits_{n=1}^zI(X;Y_n)$
+$I(X;Y)=\sum\limits_{n=1}^zI(X;y_n)$
 \begin{equation*}
     \begin{aligned}
        A=&\frac{1}{2}\sum\limits_{y_n=0}^NC_N^{y_n}\left[1-e^{-\frac{t_0}{N}}\right]^{y_n}·e^{-\frac{t_0}{N}(N-y_n)}·log_2\left\{\left[\frac{1-e^{-\frac{t_0}{N}}}{1-e^{-\frac{t_1}{N}}}\right]^{y_n}·e^{[\frac{t_1-t_0}{N}(N-y_n)]}\right\} \\
@@ -314,13 +314,13 @@ $I(X;Y)=\sum\limits_{n=1}^zI(X;Y_n)$
     \end{aligned}
 \end{equation*}
 \subsection{求解OOK调制MIMO互信息}
-有$M=2,N=4$,则：$P_r(x_1=0)=P_r(x_1=1)=\frac{1}{2},P_r(x_2=0)=P_r(x_2=1)=\frac{1}{2}$.
+有$M=2,N=4$,则：$P_r(X_1=0)=P_r(X_1=1)=\frac{1}{2},P_r(X_2=0)=P_r(X_2=1)=\frac{1}{2}$.
 \par
 记：
 \begin{equation*}
     \begin{aligned}
-       P(y_n|x_1,x_2)=&P_r(Y=y_n|x_m=x_m,m,1,2) \\
-       =&C_N^{y_n}\left[1-exp\left(-\frac{\sum_{m=1}^2h_{m,n}x_{m}n_{sm}+n_b}{N}\right)\right]^{y_n}\left[1-exp\left(-\frac{\sum_{m=1}^2h_{m,n}x_{m}n_{sm}+n_b}{N}\right)\right]^{N-y_n} \\
+       P(y_n|x_1,x_2)=&P_r(Y=y_n|X_m=x_m,m,1,2) \\
+       =&C_N^{y_n}\left[1-exp\left(-\frac{\sum_{m=1}^2h_{m,n}x_{m}n_{sm}+n_b}{N}\right)\right]^{y_n}\left[exp\left(-\frac{\sum_{m=1}^2h_{m,n}x_{m}n_{sm}+n_b}{N}\right)\right]^{N-y_n} \\
        =&P_{n_b}+P_{n_b+h_{1,m}n_{s1}}+P_{n_b+h_{2,m}n_{s2}}+P_{n_b+h_{1,m}n_{s2}}\\
        =&P_0+P_1+P_2+P_{12}
     \end{aligned}
@@ -328,10 +328,10 @@ $I(X;Y)=\sum\limits_{n=1}^zI(X;Y_n)$
 其中：
 \begin{equation*}
     \begin{aligned}
-       P_0&=C_N^{y_n}\left[1-exp\left(-\frac{n_b}{N}\right)\right]^{y_n}\left[1-exp\left(-\frac{\n_b}{N}\right)\right]^{N-y_n} \\
-       P_1&=C_N^{y_n}\left[1-exp\left(-\frac{h_{1,m}n_{s1}+n_b}{N}\right)\right]^{y_n}\left[1-exp\left(-\frac{h_{1,m}n_{s1}+n_b}{N}\right)\right]^{N-y_n} \\
-       P_2&=C_N^{y_n}\left[1-exp\left(-\frac{h_{2,m}n_{s2}+n_b}{N}\right)\right]^{y_n}\left[1-exp\left(-\frac{h_{2,m}n_{s2}+n_b}{N}\right)\right]^{N-y_n} \\
-       P_{12}&=C_N^{y_n}\left[1-exp\left(-\frac{h_{1,m}n_{s1}+h_{2,m}n_{s2}+n_b}{N}\right)\right]^{y_n}\left[1-exp\left(-\frac{h_{1,m}n_{s1}+h_{2,m}n_{s2}+n_b}{N}\right)\right]^{N-y_n}
+       P_0&=C_N^{y_n}\left[1-exp\left(-\frac{n_b}{N}\right)\right]^{y_n}\left[exp\left(-\frac{\n_b}{N}\right)\right]^{N-y_n} \\
+       P_1&=C_N^{y_n}\left[1-exp\left(-\frac{h_{1,m}n_{s1}+n_b}{N}\right)\right]^{y_n}\left[exp\left(-\frac{h_{1,m}n_{s1}+n_b}{N}\right)\right]^{N-y_n} \\
+       P_2&=C_N^{y_n}\left[1-exp\left(-\frac{h_{2,m}n_{s2}+n_b}{N}\right)\right]^{y_n}\left[exp\left(-\frac{h_{2,m}n_{s2}+n_b}{N}\right)\right]^{N-y_n} \\
+       P_{12}&=C_N^{y_n}\left[1-exp\left(-\frac{h_{1,m}n_{s1}+h_{2,m}n_{s2}+n_b}{N}\right)\right]^{y_n}\left[exp\left(-\frac{h_{1,m}n_{s1}+h_{2,m}n_{s2}+n_b}{N}\right)\right]^{N-y_n}
     \end{aligned}
 \end{equation*}
 有：\par
