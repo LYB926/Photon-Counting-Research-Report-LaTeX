@@ -1,8 +1,9 @@
 clear
-nb=0:0.1:1;
-ns=0:1:50;
+%以下为确定ns和nb的取值范围、步长，绘制底面二维坐标nb=0:0.1:1;
+ns=0:0.1:5;
 [X,Y]=meshgrid(ns,nb);
-I1=zeros(11,51);
+%建立一个空矩阵I1，根据步长确定矩阵的行数列数I1=zeros(11,51);
+%具体的算式实现，其中pfun函数是自定义的函数，具体作用在pfun.m中呈现
 for i=1:3
     pi=pfun(i,X,Y);
     p4=pfun(4,X,Y);
@@ -18,9 +19,10 @@ for i=1:3
         I2=I2+(((1.-pi).*(1.-pj)./(1.-p4))+((pi.*pj)./p4)).^10;
     end
 end
-I=I1-0.25*log2(exp(1))*I2;
+I=0.25*log2(exp(1))*I2-I1;
+%绘制图像的命令
 surf(X,Y,I);
- 
+
 function p=pfun(num_i,nb,ns)
     p=exp(-((num_i.*ns./4)+nb)./10);
 end
